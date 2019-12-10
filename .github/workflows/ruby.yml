@@ -9,6 +9,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
@@ -19,5 +25,6 @@ jobs:
         sudo apt-get -y upgrade
         sudo apt-get install libsqlite3-dev
         gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rspec
