@@ -4,8 +4,9 @@ on: [push]
 
 jobs:
   build:
-
-    container: ubuntu:latest
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
 
     steps:
     - uses: actions/checkout@v1
