@@ -1,0 +1,7 @@
+<h1>PinkedInのトップページです</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<% if current_user %>
+  <p><%= current_user.name %>でログインしています</p>
+<% else %>
+  <p>未ログインです</p>
+<% end %>
