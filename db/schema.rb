@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_115610) do
+ActiveRecord::Schema.define(version: 2019_12_11_124947) do
 
   create_table "enterprise_accounts", force: :cascade do |t|
     t.string "name"
@@ -33,8 +33,11 @@ ActiveRecord::Schema.define(version: 2019_12_11_115610) do
     t.string "graduated_university"
     t.date "birth_day"
     t.string "current_career"
+    t.integer "enterprise_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["enterprise_account_id"], name: "index_users_on_enterprise_account_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "users", "enterprise_accounts"
 end
