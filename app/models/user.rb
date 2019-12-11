@@ -6,5 +6,5 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :hiragana, presence: true
 
-  belongs_to :enterprise_account
+  belongs_to :enterprise_account, optional: true
 end
