@@ -6,5 +6,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :hiragana, presence: true
 
-  belongs_to :enterprise_account, optional: true
+  belongs_to :enterprise_account, optional: true, inverse_of: :users
+  accepts_nested_attributes_for :enterprise_account
 end
