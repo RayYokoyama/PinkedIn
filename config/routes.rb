@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
+
+  # devise
   devise_for :users,
     path: '',
     path_names: {
@@ -17,4 +19,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/ea_signup' => 'users/registrations#new_enterprise_account'
   end
+
+  get 'users/profile', to: 'users#show'
 end

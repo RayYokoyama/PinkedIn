@@ -16,6 +16,10 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+    - uses: actions/upload-artifact@master
+      with:
+        name: coverage
+        path: htmlcov
     - name: apt-get
       run: |
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
