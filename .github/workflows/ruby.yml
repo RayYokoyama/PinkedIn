@@ -16,10 +16,12 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
-    - uses: actions/upload-artifact@master
+    - uses: devmasx/coverage-check-action@v1.1.0
       with:
-        name: coverage
-        path: htmlcov
+        type: simplecov
+        result_path: coverage/.last_run.json
+        min_coverage: 90
+        token: ${{secrets.GITHUB_TOKEN}}
     - name: apt-get
       run: |
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
