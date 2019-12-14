@@ -25,6 +25,7 @@ jobs:
         apt-get install -y yarn
         apt-get install -y libsqlite3-dev
         apt-get install -y nodejs
+        yarn install --check-files
     - name: bundle install 
       run: |
         gem install bundler
