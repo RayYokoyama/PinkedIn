@@ -38,11 +38,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # GET /ea_signup
+  def new_enterprise_account
+    @user = User.new
+    @user.build_enterprise_account
+  end
+
+  def create
+    super
+    @user = User.new(configure_sign_up_params)
+    @user.save
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :hiragana])
+    devise_parameter_sanitizer.permit(
+      :sign_up, keys: [
+        :name,
+        :hiragana,
+        enterprise_account_attributes: [
+          :name,
+          :hiragana
+        ]
+      ]
+    )
   end
 
   # If you have extra params to permit, append them to the sanitizer.

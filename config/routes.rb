@@ -14,4 +14,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations',
       sessions:      'users/sessions',
     }
+  devise_scope :user do
+    get '/ea_signup' => 'users/registrations#new_enterprise_account'
+  end
 end

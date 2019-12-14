@@ -1,4 +1,4 @@
-name: Ruby
+name: PinkedIn
 
 on: [push]
 
@@ -16,12 +16,24 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
-    - name: Build and test with Rake
+    - name: apt-get
       run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
         apt-get -y update
         apt-get -y upgrade
+        apt-get install -y yarn
         apt-get install -y libsqlite3-dev
+        apt-get install -y nodejs
+        yarn install --check-files
+    - name: bundle install 
+      run: |
         gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
+        bundle exec rails webpacker:install
+        bundle exec rake assets:precompile
+        NODE_ENV=test bundle exec rails webpacker:compile
+    - name: run rspec
+      run: |
         bundle exec rspec
