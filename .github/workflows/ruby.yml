@@ -18,11 +18,13 @@ jobs:
           ${{ runner.os }}-gem-
     - name: apt-get
       run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
         apt-get -y update
         apt-get -y upgrade
+        apt-get install -y yarn
         apt-get install -y libsqlite3-dev
         apt-get install -y nodejs
-        apt-get install -y yarn 
     - name: bundle install 
       run: |
         gem install bundler
