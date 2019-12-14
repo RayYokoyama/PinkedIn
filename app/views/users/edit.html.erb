@@ -1,0 +1,29 @@
+<h2>edit user</h2>
+
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hiragana %><br />
+    <%= f.text_field :hiragana, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_day %><br />
+    <%= f.date_select :birth_day, start_year: 1940, end_year: Time.current.year, use_month_numbers: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :graduated_university %><br />
+    <%= f.text_field :graduated_university, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_career %><br />
+    <%= f.text_field :current_career, autofocus: true %>
+  </div>
+<% end %>
+
