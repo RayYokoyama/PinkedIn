@@ -1,4 +1,4 @@
-name: Ruby
+name: PinkedIn
 
 on: [push]
 
@@ -24,8 +24,6 @@ jobs:
         gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec rails webpacker:install
-        bundle exec rails webpacker:compile RAILS_ENV=test
     - name: run rspec
       run: |
         bundle exec rspec
