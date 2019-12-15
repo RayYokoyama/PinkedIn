@@ -1,0 +1,15 @@
+<h1>プロフィール画面</h1>
+<% if @enterprise_account %>
+  <h2><%= @enterprise_account.name %></h2>
+  <p><%= link_to('企業情報編集', "") %></p>
+<% end %>
+
+<p>ユーザー名:<%= @user.name %><p>
+<p>ユーザー名(カナ):<%= @user.hiragana %></p>
+<p>生年月日:<%= @user.birth_day %></p>
+<p>出身大学:<%= @user.graduated_university %></p>
+<p>現在の職種:<%= @user.current_career %></p>
+
+<% if current_user.id == params[:id] || request.fullpath.include?('profile')%>
+  <p><%= link_to('プロフィール編集', "/user/profile/edit") %></p>
+<% end %>
