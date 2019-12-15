@@ -10,4 +10,6 @@
 <p>出身大学:<%= @user.graduated_university %></p>
 <p>現在の職種:<%= @user.current_career %></p>
 
-<p><%= link_to('プロフィール編集', "/user/profile/edit") %></p>
+<% if current_user.id == params[:id] || request.fullpath.include?('profile')%>
+  <p><%= link_to('プロフィール編集', "/user/profile/edit") %></p>
+<% end %>
