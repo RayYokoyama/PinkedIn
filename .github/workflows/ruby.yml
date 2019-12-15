@@ -41,6 +41,6 @@ jobs:
     - uses: devmasx/coverage-check-action@v1.1.0
       with:
         type: simplecov
-        result_path: coverage/.last_run.json
+        result_path: coverage/index.html
         min_coverage: 90
         token: ${{secrets.GITHUB_TOKEN}}
