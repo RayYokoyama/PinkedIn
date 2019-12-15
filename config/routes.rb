@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     get '/ea_signup' => 'users/registrations#new_enterprise_account'
   end
 
-  get '/profile', to: 'users#show'
-  resources :users
+  resource :user, path: '/user/profile'
+  resources :users, only: [:show]
 end
