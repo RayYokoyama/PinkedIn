@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :offer do
-    name { "MyString" }
+    name { "テスト用求人" }
     fee_type { 1 }
-    fee { 1 }
-    description { "MyString" }
-    deadline { "" }
-    enterprise_account { nil }
+    fee { 10000 }
+    description { "これはテスト用求人です。アットホームな職場です!!" }
+    deadline { Time.zone.now.next_month }
+    association :enterprise_account, factory: :enterprise_account
   end
 end

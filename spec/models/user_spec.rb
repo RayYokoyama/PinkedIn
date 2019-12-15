@@ -38,4 +38,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'インスタンスメソッドテスト' do
+    context '企業ユーザーの時' do
+      let(:user) { create(:ea_user) }
+      it 'ea_user? return true' do 
+        expect(user.ea_user?).to eq(true)
+      end
+    end
+    context '一般ユーザーの時' do
+      let(:user) { create(:normal_user) }
+      it 'ea_user? return false' do
+        expect(user.ea_user?).to eq(false)
+      end
+    end
+  end
 end
