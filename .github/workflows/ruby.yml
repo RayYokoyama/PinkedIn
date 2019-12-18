@@ -44,7 +44,7 @@ jobs:
         result_path: coverage/.last_run.json
         min_coverage: 90
         token: ${{secrets.GITHUB_TOKEN}}
-    - uses: actions/dowmload-artifact@master
+    - uses: actions/upload-artifact@master
       with:
         name: coverage
         path: coverage
