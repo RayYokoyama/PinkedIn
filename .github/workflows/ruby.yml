@@ -45,6 +45,6 @@ jobs:
         min_coverage: 90
         token: ${{secrets.GITHUB_TOKEN}}
     - uses: actions/upload-artifact@master
-        with:
-          name: coverage
-          path: PinkedIn/coverage/index.html
+      with:
+        name: coverage
+        path: PinkedIn/coverage/index.html
