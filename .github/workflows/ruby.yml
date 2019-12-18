@@ -47,4 +47,4 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: coverage
-        path: ~/PinkedIn/coverage/index.html
+        path: ~/coverage/index.html
