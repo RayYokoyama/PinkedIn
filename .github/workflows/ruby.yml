@@ -41,6 +41,8 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3 --path vendor/bundle
+    - name: webpacker install
+      run: |
         bundle exec rails webpacker:install
         bundle exec rake assets:precompile
         NODE_ENV=test bundle exec rails webpacker:compile
