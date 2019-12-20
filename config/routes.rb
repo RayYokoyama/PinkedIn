@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'offers/index'
   root to: 'home#index'
 
   # devise
@@ -23,4 +22,6 @@ Rails.application.routes.draw do
 
   resource :user, path: '/user/profile'
   resources :users, only: [:show]
+
+  resources :offers
 end

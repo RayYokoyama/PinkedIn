@@ -1,4 +1,45 @@
 class OffersController < ApplicationController
+  before_action :set_offer, only: [:show, :edit, :update]
   def index
+    @offers = Offer.all.order(updated_at: :desc)
+    puts @offers
+  end
+
+  def show
+  end
+
+  def new
+    @offer = Offer.new
+  end
+
+  def create
+    @offer = Offer.new(update_params)
+    @offer.enterprise_account_id = current_user.enterprise_account.id
+    if @offer.save
+      redirect_to "/offers/#{@offer.id}"
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @offer.update!(update_params)
+      redirect_to "/offers/#{@offer.id}"
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def set_offer
+    @offer = Offer.find(params[:id])
+  end
+
+  def update_params
+    params.require(:offer).permit(:name, :description, :deadline, :fee_type, :fee)
   end
 end

@@ -1,0 +1,40 @@
+<h2>edit offer</h2>
+
+<%= form_for @offer do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deadline %><br />
+    <%=
+      f.date_select(
+        :deadline,
+        start_year: Time.current.year,
+        end_year: 2031,
+        use_month_numbers: true
+      )
+    %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fee_type %><br />
+    <%= f.select :fee_type, Offer.fee_types.keys.to_a, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fee %><br />
+    <%= f.number_field :fee, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+
+<% end %>
