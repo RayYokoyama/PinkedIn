@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update!(update_user_params)
+    @user.update!(update_params)
     redirect_to '/user/profile'
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   # strong_parameters
-  def update_user_params
+  def update_params
     params.require(:user).permit(:name, :hiragana, :birth_day, :graduated_university, :current_career)
   end
 end
