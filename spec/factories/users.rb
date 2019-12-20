@@ -12,6 +12,7 @@ FactoryBot.define do
       hiragana { 'てすときぎょうあかうんとゆーざー' }
       email { 'ea_test@pinkdin.com' }
       password { 'password' }
+      association :enterprise_account, factory: :enterprise_account
     end
   end
 end

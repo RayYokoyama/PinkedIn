@@ -2,6 +2,7 @@
 <p>Find me in app/views/home/index.html.erb</p>
 <% if current_user %>
   <p><%= current_user.name %>でログインしています</p>
+  <%= link_to('求人を投稿する', '/offers/new') %>
 <% else %>
   <p>未ログインです</p>
 <% end %>
