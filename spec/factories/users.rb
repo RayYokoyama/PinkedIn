@@ -19,7 +19,7 @@ FactoryBot.define do
 
     factory :admin_user do
       name { '管理者ユーザー' }
-      hiragaba { 'かんりしゃユーザー' }
+      hiragana { 'かんりしゃユーザー' }
       email { 'admin@pinkedin.com' }
       password { 'password' }
       admin { true }

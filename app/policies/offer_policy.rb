@@ -6,17 +6,26 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def show?
-    user.
+    user.present?
+  end
 
+  def new?
+    user&.admin? || user&.ea_user?
+  end
+
+  def create?
+    new?
+  end
+
+  def edit?
+    user&.admin || user&.enterprise_account_id == @offer.enterprise_account_id
   end
 
   def update?
-    user.present? && (user.admin || user.enterprise_account_id == @offer.enterprise_account_id)
+    edit?
   end
 
-  protected
-
-  def is_user_exists?
-    user.present?
+  def destroy?
+    edit?
   end
 end

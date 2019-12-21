@@ -14,7 +14,6 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(update_params)
-    p current_user
     @offer.enterprise_account_id = current_user.enterprise_account.id
     if @offer.save
       redirect_to "/offers/#{@offer.id}"
@@ -27,6 +26,7 @@ class OffersController < ApplicationController
   end
 
   def update
+    authorize @offer
     if @offer.update!(update_params)
       redirect_to "/offers/#{@offer.id}"
     else

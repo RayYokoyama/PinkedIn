@@ -16,7 +16,7 @@ describe OfferPolicy do
   end
   
   context '一般ユーザーの場合' do
-    let(:user) { create(:user) }
+    let(:user) { create(:normal_user) }
   
     it { is_expected.to     authorize(:show)    }
     it { is_expected.to_not authorize(:create)  }
@@ -27,7 +27,11 @@ describe OfferPolicy do
   end
   
   context '企業アカウントユーザーの場合' do
-    let(:ea_user) { create(:ea_user) }
+    let(:user) { create(:ea_user) }
+    before {
+      user.enterprise_account = offer.enterprise_account
+      user.save
+    }
   
     it { is_expected.to authorize(:show)    }
     it { is_expected.to authorize(:create)  }
@@ -38,7 +42,7 @@ describe OfferPolicy do
   end
   
   context 'adminユーザーの場合' do
-    let(:admin_user) { create(:admin_user) }
+    let(:user) { create(:admin_user) }
   
     it { is_expected.to authorize(:show)    }
     it { is_expected.to authorize(:create)  }
