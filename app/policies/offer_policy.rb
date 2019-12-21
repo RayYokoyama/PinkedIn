@@ -10,7 +10,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def new?
-    user&.admin? || user&.ea_user?
+    user&.ea_user?
   end
 
   def create?

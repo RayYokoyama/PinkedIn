@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :new_authorize, only: [:new, :create]
   def index
     @offers = Offer.all.order(updated_at: :desc)
     puts @offers
@@ -26,7 +27,6 @@ class OffersController < ApplicationController
   end
 
   def update
-    authorize @offer
     if @offer.update!(update_params)
       redirect_to "/offers/#{@offer.id}"
     else
@@ -43,9 +43,14 @@ class OffersController < ApplicationController
 
   def set_offer
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def update_params
     params.require(:offer).permit(:name, :description, :deadline, :fee_type, :fee)
+  end
+
+  def new_authorize
+    authorize Offer
   end
 end
