@@ -5,6 +5,7 @@ FactoryBot.define do
       hiragana { 'てすとゆーざー' }
       email { 'test@pinkedin.com' }
       password { 'password' }
+      admin { false }
     end
 
     factory :ea_user do
@@ -12,7 +13,16 @@ FactoryBot.define do
       hiragana { 'てすときぎょうあかうんとゆーざー' }
       email { 'ea_test@pinkdin.com' }
       password { 'password' }
+      admin { false }
       association :enterprise_account, factory: :enterprise_account
+    end
+
+    factory :admin_user do
+      name { '管理者ユーザー' }
+      hiragaba { 'かんりしゃユーザー' }
+      email { 'admin@pinkedin.com' }
+      password { 'password' }
+      admin { true }
     end
   end
 end

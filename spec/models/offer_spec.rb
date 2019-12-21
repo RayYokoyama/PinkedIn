@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Offer, type: :model do
   describe 'validationテスト' do
-    let(:offer) { create(:offer) }
+    let(:offer) { build(:offer) }
     let(:enterprise_account) { create(:enterprise_account) }
     before{ offer.enterprise_account = enterprise_account }
     context 'name, fee, description, deadlineがあり、enterprise_accountが紐づいている時' do
