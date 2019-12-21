@@ -18,7 +18,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def edit?
-    user&.admin || user&.enterprise_account_id == @offer.enterprise_account_id
+    user&.enterprise_account_id == @offer.enterprise_account_id
   end
 
   def update?
