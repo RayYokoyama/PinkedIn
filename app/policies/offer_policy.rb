@@ -26,6 +26,6 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    user&.admin || edit?
   end
 end

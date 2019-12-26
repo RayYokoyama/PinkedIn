@@ -45,10 +45,10 @@ describe OfferPolicy do
     let(:user) { create(:admin_user) }
   
     it { is_expected.to authorize(:show)    }
-    it { is_expected.to authorize(:create)  }
-    it { is_expected.to authorize(:new)     }
-    it { is_expected.to authorize(:update)  }
-    it { is_expected.to authorize(:edit)    }
+    it { is_expected.to_not authorize(:create)  }
+    it { is_expected.to_not authorize(:new)     }
+    it { is_expected.to_not authorize(:update)  }
+    it { is_expected.to_not authorize(:edit)    }
     it { is_expected.to authorize(:destroy) }
   
   end
