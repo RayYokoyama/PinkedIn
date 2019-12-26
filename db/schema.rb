@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_112517) do
+ActiveRecord::Schema.define(version: 2019_12_20_121105) do
 
   create_table "enterprise_accounts", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_112517) do
     t.date "birth_day"
     t.string "current_career"
     t.integer "enterprise_account_id"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["enterprise_account_id"], name: "index_users_on_enterprise_account_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

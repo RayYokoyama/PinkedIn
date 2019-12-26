@@ -2,12 +2,18 @@ require 'rails_helper'
 
 RSpec.describe OffersController, type: :controller do
 
-  let(:ea_user) { create(:ea_user) }
+  let(:user) { create(:normal_user) }
   let(:offer) { create(:offer) }
-  before { login_user ea_user }
+  before {
+    login user
+    user.enterprise_account = offer.enterprise_account
+    user.save
+  }
 
   describe "GET #index" do
-    before { get :index, params: {} }
+    before {
+      get :index, params: {} 
+    }
     it "returns http success" do
       expect(response).to have_http_status(:success)
     end
@@ -73,6 +79,7 @@ RSpec.describe OffersController, type: :controller do
     end
 
     it "求人が更新されている" do
+      offer.enterprise_account = user.enterprise_account
       put :update, params: update_params
       offer.reload
       expect(offer.name).to eq update_params[:offer][:name]
@@ -83,7 +90,7 @@ RSpec.describe OffersController, type: :controller do
     it 'deletes the article' do
       expect do
         delete :destroy, params: { id: offer.id }
-      end.to change(Offer, :count).by(0)
+      end.to change(Offer, :count).by(-1)
     end
   end
 end
