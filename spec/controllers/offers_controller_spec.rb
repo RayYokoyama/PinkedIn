@@ -85,7 +85,7 @@ RSpec.describe OffersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    it 'deletes the article' do
+    it 'deletes the offer' do
       expect do
         delete :destroy, params: { id: offer.id }
       end.to change(Offer, :count).by(-1)

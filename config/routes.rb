@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :offers
+
+  resources :enterprise_accounts, only: [:index, :show, :edit, :update, :destroy]
 end
