@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   let(:user) { create(:normal_user) }
-  before { login_user user }
+  before { login user }
 
   describe "GET #show" do
     before { get :show, params: {} }
