@@ -16,14 +16,14 @@
         <ul>
           <li><%= link_to('トップ', root_path ) %></li>
           <% if current_user %>
-            <li><%= link_to('ログアウト', '/logout', method: :delete) %></li>
-            <li><%= link_to('プロフィールページ', '/user/profile') %></li>
-            <li><%= link_to('求人一覧', '/offers') %></li>
+            <li><%= link_to('ログアウト', destroy_user_session_path, method: :delete) %></li>
+            <li><%= link_to('プロフィールページ', user_path) %></li>
+            <li><%= link_to('求人一覧', offers_path) %></li>
             <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
           <% else %>
-            <li><%= link_to('ユーザー登録', '/signup') %></li>
-            <li><%= link_to('企業ユーザー登録', '/ea_signup') %></li>
-            <li><%= link_to('ログイン', '/login' ) %></li>
+            <li><%= link_to('ユーザー登録', new_user_registration_path) %></li>
+            <li><%= link_to('企業ユーザー登録', ea_signup_path) %></li>
+            <li><%= link_to('ログイン', new_user_session_path ) %></li>
           <% end %>
         </ul>
       </header>

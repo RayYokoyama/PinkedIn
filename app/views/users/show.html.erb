@@ -14,5 +14,5 @@
 <p>現在の職種      :<%= @user.current_career %></p>
 
 <% if current_user.id == params[:id] || request.fullpath.include?('profile')%>
-  <p><%= link_to('プロフィール編集', "/user/profile/edit") %></p>
+  <p><%= link_to('プロフィール編集', edit_user_path) %></p>
 <% end %>
