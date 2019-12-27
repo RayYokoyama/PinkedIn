@@ -28,14 +28,15 @@ RSpec.describe EnterpriseAccountsController, type: :controller do
 
   describe "POST #update" do
     let(:params) { {
+      id: enterprise_account.id,
       enterprise_account: {
         name: "更新テスト企業アカウント#{Time.zone.now.to_i}",
         hiragana: "こうしんてすときぎょうあかうんと#{Time.zone.now.to_i}"
       }
     } }
-    before { post :update, params: params }
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
+    before { put :update, params: params }
+    it "returns http 302" do
+      expect(response).to have_http_status(302)
     end
 
     it "nameが更新されている" do

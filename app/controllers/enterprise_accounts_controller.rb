@@ -15,7 +15,7 @@ class EnterpriseAccountsController < ApplicationController
     if @enterprise_account.update!(update_params)
       redirect_to enterprise_account_path(@enterprise_account)
     else
-      render :new
+      render :edit
     end
   end
 
