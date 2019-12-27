@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EnterpriseAccountsController, type: :controller do
   let(:ea_user) { create(:ea_user) }
-  let(:enterprise_account) { create(:enterprise_account) }
+  let(:enterprise_account) { ea_user.enterprise_account }
   before { login ea_user }
 
   describe "GET #index" do
@@ -48,7 +48,7 @@ RSpec.describe EnterpriseAccountsController, type: :controller do
     it 'deletes the enterprise_account' do
       expect do
         delete :destroy, params: { id: enterprise_account.id }
-      end.to change(EnterpriseAccount, :count).by(0)
+      end.to change(EnterpriseAccount, :count).by(-1)
     end
   end
 end
