@@ -1,5 +1,6 @@
 class EnterpriseAccountsController < ApplicationController
   before_action :set_enterprise_account, only: [:show, :edit, :update, :destroy]
+
   def index
     @enterprise_accounts = EnterpriseAccount.all
   end
