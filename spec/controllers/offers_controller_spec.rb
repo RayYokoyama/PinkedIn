@@ -11,31 +11,29 @@ RSpec.describe OffersController, type: :controller do
   }
 
   describe "GET #index" do
-    before {
-      get :index, params: {} 
-    }
     it "returns http success" do
+      get :index, params: {} 
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #show" do
-    before { get :show, params: { id: offer.id } }
     it "return http success" do
+      get :show, params: { id: offer.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #new" do
-    before { get :new, params: {} }
     it "return http success" do
+      get :new, params: {}
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
-    before { get :edit, params: { id: offer.id } }
     it "return http success" do
+      get :edit, params: { id: offer.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -87,7 +85,7 @@ RSpec.describe OffersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    it 'deletes the article' do
+    it 'deletes the offer' do
       expect do
         delete :destroy, params: { id: offer.id }
       end.to change(Offer, :count).by(-1)

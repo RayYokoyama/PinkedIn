@@ -1,0 +1,6 @@
+<h1>求人出してる企業一覧</h1>
+<ul>
+  <% @enterprise_accounts.each do |enterprise_account| %>
+    <li><%= link_to(enterprise_account.name, enterprise_account_path(enterprise_account)) %></li>
+  <% end %>
+</ul>

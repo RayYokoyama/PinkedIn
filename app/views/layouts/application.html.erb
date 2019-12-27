@@ -19,6 +19,7 @@
             <li><%= link_to('ログアウト', '/logout', method: :delete) %></li>
             <li><%= link_to('プロフィールページ', '/user/profile') %></li>
             <li><%= link_to('求人一覧', '/offers') %></li>
+            <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
           <% else %>
             <li><%= link_to('ユーザー登録', '/signup') %></li>
             <li><%= link_to('企業ユーザー登録', '/ea_signup') %></li>

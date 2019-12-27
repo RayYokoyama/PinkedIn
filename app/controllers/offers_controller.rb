@@ -1,9 +1,9 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :new_authorize, only: [:new, :create]
+
   def index
     @offers = Offer.all.order(updated_at: :desc)
-    puts @offers
   end
 
   def show
