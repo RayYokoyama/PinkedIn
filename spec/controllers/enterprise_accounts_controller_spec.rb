@@ -48,7 +48,7 @@ RSpec.describe EnterpriseAccountsController, type: :controller do
     it 'deletes the enterprise_account' do
       expect do
         delete :destroy, params: { id: enterprise_account.id }
-      end.to change(EnterpriseAccount, :count).by(-1)
+      end.to change(EnterpriseAccount, :count).by(0)
     end
   end
 end
