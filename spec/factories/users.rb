@@ -8,6 +8,14 @@ FactoryBot.define do
       admin { false }
     end
 
+    factory :target_user do
+      name { 'ターゲットユーザー' }
+      hiragana { 'たーげっとゆーざー' }
+      email { 'test_target@pinkedin.com' }
+      password { 'password' }
+      admin { false }
+    end
+
     factory :ea_user do
       name { 'テスト企業アカウントユーザー' }
       hiragana { 'てすときぎょうあかうんとゆーざー' }
