@@ -6,15 +6,15 @@ RSpec.describe UsersController, type: :controller do
   before { login user }
 
   describe "GET #show" do
-    before { get :show, params: {} }
     it "returns http success" do
+      get :show, params: {}
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
-    before { get :edit, params: {} }
     it "returns http success" do
+      get :edit, params: {}
       expect(response).to have_http_status(:success)
     end
   end

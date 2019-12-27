@@ -1,0 +1,19 @@
+<h2>企業情報編集ページ</h2>
+
+<%= form_for @enterprise_account do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hiragana %><br />
+    <%= f.text_field :hiragana, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+
+<% end %>
+
