@@ -1,5 +1,7 @@
 <h1><%= @offer.name %>の詳細ページ</h1>
 
 <p><%= @offer.description %></p>
-<%= link_to('編集する', edit_offer_path(@offer))%>
-<%= link_to '削除する', offer_path(@offer), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% if @offer.enterprise_account_id == current_user&.enterprise_account_id %>
+  <%= link_to('編集する', edit_offer_path(@offer))%>
+  <%= link_to '削除する', offer_path(@offer), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
