@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+    authorize @user
   end
 
-  # strong_parameters
   def update_params
     params.require(:user).permit(:name, :hiragana, :birth_day, :graduated_university, :current_career)
   end

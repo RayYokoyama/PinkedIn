@@ -28,6 +28,7 @@ class EnterpriseAccountsController < ApplicationController
 
   def set_enterprise_account
     @enterprise_account = EnterpriseAccount.find(params[:id])
+    authorize @enterprise_account
   end
 
   def update_params
