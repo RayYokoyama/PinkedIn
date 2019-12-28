@@ -38,4 +38,9 @@ admin_user = User.create(
   )
 end
 
-# TODO applicationの作成
+# offer_applicationの作成
+offer = Offer.first
+offer_application = OfferApplication.create(
+  offer_id: offer.id,
+  user_id: user.id
+)
