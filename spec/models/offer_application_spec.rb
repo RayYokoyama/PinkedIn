@@ -17,5 +17,4 @@ RSpec.describe OfferApplication, type: :model do
       end
     end
   end
-
 end

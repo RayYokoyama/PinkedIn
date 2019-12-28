@@ -1,6 +1,6 @@
 class Offer < ApplicationRecord
   has_many :offer_applications
-  has_many :offers, through: :offer_applications
+  has_many :users, through: :offer_applications
   belongs_to :enterprise_account
 
   validates :name, :fee, :description, :deadline, presence: true 

@@ -25,4 +25,14 @@ RSpec.describe Offer, type: :model do
      end
     end
   end
+
+  describe 'offer_applications用のメソッド' do
+    let(:user) { create(:normal_user) }
+    let(:offer) { create(:offer) }
+    before { user.apply_offer!(offer) }
+
+    it '応募者一覧' do
+      expect(offer.users).to include user
+    end
+  end
 end
