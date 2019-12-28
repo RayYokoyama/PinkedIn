@@ -42,5 +42,5 @@ end
 offer = Offer.first
 offer_application = OfferApplication.create(
   offer_id: offer.id,
-  user_id: user.id
+  user_id: normal_user.id
 )

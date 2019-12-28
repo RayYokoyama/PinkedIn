@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_150307) do
+ActiveRecord::Schema.define(version: 2019_12_28_153652) do
 
   create_table "enterprise_accounts", force: :cascade do |t|
     t.string "name"
@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(version: 2019_12_28_150307) do
   end
 
   create_table "offer_applications", force: :cascade do |t|
-    t.integer "offer_id"
-    t.integer "user_id"
+    t.integer "offer_id", null: false
+    t.integer "user_id", null: false
     t.boolean "accepted", default: false, null: false
-    t.integer "type", limit: 1, default: 0, null: false
+    t.integer "application_type", limit: 1, default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offer_applications_on_offer_id"
+    t.index ["user_id"], name: "index_offer_applications_on_user_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_12_28_150307) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "offer_applications", "offers"
+  add_foreign_key "offer_applications", "users"
   add_foreign_key "offers", "enterprise_accounts"
   add_foreign_key "users", "enterprise_accounts"
 end
