@@ -1,0 +1,2 @@
+module OfferApplicationsHelper
+end
