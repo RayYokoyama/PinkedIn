@@ -39,6 +39,10 @@ class OffersController < ApplicationController
     redirect_to offers_path
   end
 
+  def applied
+    @applied_offers = current_user.applied_offers
+  end
+
   private
 
   def set_offer

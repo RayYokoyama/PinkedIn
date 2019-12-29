@@ -22,4 +22,12 @@ class User < ApplicationRecord
       offer_applications.create!(offer_id: offer.id)
     end
   end
+
+  def applied_offers
+    offer_applications.map(&:offer)
+  end
+
+  def own_offer?(offer)
+    enterprise_account == offer.enterprise_account
+  end
 end

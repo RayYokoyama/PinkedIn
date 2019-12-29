@@ -59,16 +59,30 @@ RSpec.describe User, type: :model do
   end
 
   describe 'インスタンスメソッド' do
-    context '企業ユーザーの時' do
-      let(:user) { create(:ea_user) }
-      it 'ea_user? return true' do 
-        expect(user.ea_user?).to eq(true)
+    describe 'ea_user?' do
+      context '企業ユーザーの時' do
+        let(:user) { create(:ea_user) }
+        it 'ea_user? return true' do 
+          expect(user.ea_user?).to eq(true)
+        end
+      end
+      context '一般ユーザーの時' do
+        let(:user) { create(:normal_user) }
+        it 'ea_user? return false' do
+          expect(user.ea_user?).to eq(false)
+        end
       end
     end
-    context '一般ユーザーの時' do
-      let(:user) { create(:normal_user) }
-      it 'ea_user? return false' do
-        expect(user.ea_user?).to eq(false)
+    describe 'own_offer?(offer)' do
+      let(:user) { build(:ea_user) }
+      let(:offer) { build(:offer) }
+      let(:enterprise_account) { create(:enterprise_account) }
+      before{ 
+        offer.enterprise_account = enterprise_account
+        user.enterprise_account = enterprise_account
+      }
+      it 'own_offer? return true' do
+        expect(user.own_offer?(offer)).to eq(true)
       end
     end
   end
