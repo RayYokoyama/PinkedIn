@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :offers do
     collection do
       get 'applied'
+      get 'posted'
     end
   end
   resources :enterprise_accounts, only: [:index, :show, :edit, :update, :destroy]

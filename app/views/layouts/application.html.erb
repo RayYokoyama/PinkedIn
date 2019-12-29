@@ -21,7 +21,7 @@
             <li><%= link_to('求人一覧', offers_path) %></li>
             <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
             <% if current_user.ea_user? %>
-              <li><%= link_to('応募者一覧', ) %></li>
+              <li><%= link_to('出した求人一覧', posted_offers_path) %></li>
             <% else %>
               <li><%= link_to('応募した求人一覧', applied_offers_path) %></li>
             <% end %>

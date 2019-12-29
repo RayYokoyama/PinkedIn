@@ -39,8 +39,14 @@ class OffersController < ApplicationController
     redirect_to offers_path
   end
 
+  # 応募した求人一覧
   def applied
     @applied_offers = current_user.applied_offers
+  end
+
+  # 出した求人一覧
+  def posted
+    @posted_offers = current_user.enterprise_account.offers
   end
 
   private
