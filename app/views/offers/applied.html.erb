@@ -4,12 +4,13 @@
 <% @applied_offers.each do |offer| %>
   <li>
     <dl>
-      <dt>求人名</dt>
-      <dd><%= link_to(offer.name, offer_path(offer)) %></dd>
+      <dt>求人名: <%= link_to(offer.name, offer_path(offer)) %></dt>
     </dl>
     <dl>
-      <dt>企業名</dt>
-      <dd><%= link_to(offer.enterprise_account.name, enterprise_account_path(offer.enterprise_account)) %></dd>
+      <dt>企業名:<%= link_to(offer.enterprise_account.name, enterprise_account_path(offer.enterprise_account)) %></dt>
+    </dl>
+    <dl>
+      <dt>状態:<%= current_user.offer_applications.find_by_offer_id(offer).accepted ? '返事待ち' : '受け入れられた'%></dt>
     </dl>
   </li>
 <% end %>

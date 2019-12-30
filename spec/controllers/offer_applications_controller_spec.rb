@@ -23,26 +23,19 @@ RSpec.describe OfferApplicationsController, type: :controller do
   end
   
   describe "PUT #update" do
-    let(:update_params) { {
-      id: offer.id,
-      offer: {
-        name: "test_offer_#{Time.zone.now.to_i}",
-        fee_type: :month,
-        fee: 100000,
-        description: 'this is test offer',
-        deadline: Time.zone.now
-      }
+    let(:offer_application) { create(:offer_application) }
+    let(:params) { {
+      id: offer_application.offer_id,
     } }
 
     it "return http success" do
       expect(response).to have_http_status(:success)
     end
 
-    it "求人が更新されている" do
-      offer.enterprise_account = user.enterprise_account
-      put :update, params: update_params
-      offer.reload
-      expect(offer.name).to eq update_params[:offer][:name]
+    it "acceptedがtrueになっている" do
+      put :update, params: params
+      offer_application.reload
+      expect(offer_application.accepted).to eq(true)
     end
   end
 end
