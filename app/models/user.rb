@@ -30,8 +30,4 @@ class User < ApplicationRecord
   def own_offer?(offer)
     enterprise_account == offer.enterprise_account
   end
-  
-  def accept_offer_application!(offer_application)
-    offer_application.update!(accepted: true)
-  end
 end
