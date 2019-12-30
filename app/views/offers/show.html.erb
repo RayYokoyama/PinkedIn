@@ -11,6 +11,6 @@
     <% end %>
   </ul>
 <% else %>
-  <%= button_to '応募する' %>
+  <%= button_to '応募する', offer_applications_path(offer_application: {offer_id: @offer.id, status: 0}), {disabled: current_user.applying?(@offer)} %>
 <% end %>
 
