@@ -10,7 +10,7 @@
       <dt>企業名:<%= link_to(offer.enterprise_account.name, enterprise_account_path(offer.enterprise_account)) %></dt>
     </dl>
     <dl>
-      <dt>状態:<%= current_user.offer_applications.find_by_offer_id(offer).accepted ? '返事待ち' : '受け入れられた'%></dt>
+      <dt>状態:<%= current_user.offer_applications.find_by_offer_id(offer).accepted ? '受け入れられた.メールを待ってね' : '返事待ち'%></dt>
     </dl>
   </li>
 <% end %>
