@@ -22,8 +22,12 @@ Rails.application.routes.draw do
 
   resource :user, path: '/user/profile'
   resources :users, only: [:show]
-
-  resources :offers
-
+  resources :offers do
+    collection do
+      get 'applied'
+      get 'posted'
+    end
+  end
   resources :enterprise_accounts, only: [:index, :show, :edit, :update, :destroy]
+  resources :offer_applications, only: [:create, :update]
 end

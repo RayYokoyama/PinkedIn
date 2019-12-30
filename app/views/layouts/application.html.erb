@@ -20,6 +20,11 @@
             <li><%= link_to('プロフィールページ', user_path) %></li>
             <li><%= link_to('求人一覧', offers_path) %></li>
             <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
+            <% if current_user.ea_user? %>
+              <li><%= link_to('出した求人一覧', posted_offers_path) %></li>
+            <% else %>
+              <li><%= link_to('応募した求人一覧', applied_offers_path) %></li>
+            <% end %>
           <% else %>
             <li><%= link_to('ユーザー登録', new_user_registration_path) %></li>
             <li><%= link_to('企業ユーザー登録', ea_signup_path) %></li>
