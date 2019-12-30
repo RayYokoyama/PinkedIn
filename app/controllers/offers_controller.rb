@@ -7,6 +7,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @applicants = @offer.offer_applications.map(&:user)
   end
 
   def new
