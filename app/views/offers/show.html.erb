@@ -7,10 +7,16 @@
   <h2>応募者一覧</h2>
   <ul>
     <% @applicants.each do |user| %>
-      <li><%=link_to user.name, "/users/#{user.id}"%></li>
+      <li>
+        <%=link_to user.name, "/users/#{user.id}"%>
+        <%= button_to '受け入れる',
+          offer_application_path(user.offer_applications.find_by_offer_id(@offer)),
+          {method: :put, disabled: user.offer_applications.find_by_offer_id(@offer).accepted}
+        %>
+      </li>
     <% end %>
   </ul>
 <% else %>
-  <%= button_to '応募する' %>
+  <%= button_to '応募する', offer_applications_path(offer_application: {offer_id: @offer.id, status: 0}), {disabled: current_user.applying?(@offer)} %>
 <% end %>
 
