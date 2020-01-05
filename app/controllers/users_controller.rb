@@ -15,18 +15,18 @@ class UsersController < ApplicationController
 
   def update
     @user.update!(update_params)
-    redirect_to '/user/profile'
+    redirect_to user_path
   end
 
   protected 
 
   def redirect_if_not_logged_in
-    redirect_to '/' unless current_user
+    redirect_to root_path unless current_user
   end
 
   def redirect_if_current_user
     if params[:id].to_i == current_user.id
-      redirect_to '/user' 
+      redirect_to user_path
     end
   end
 

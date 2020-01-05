@@ -10,7 +10,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def new?
-    user&.ea_user?
+    show? && user&.ea_user?
   end
 
   def create?
@@ -18,7 +18,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def edit?
-    user&.enterprise_account_id == @offer.enterprise_account_id
+    show? && user&.enterprise_account_id == @offer.enterprise_account_id
   end
 
   def update?
@@ -27,5 +27,13 @@ class OfferPolicy < ApplicationPolicy
 
   def destroy?
     user&.admin || edit?
+  end
+
+  def applied?
+    show? && (user&.admin? || !user&.ea_user?)
+  end
+
+  def posted?
+    show? && (user&.admin? || user&.ea_user?)
   end
 end
