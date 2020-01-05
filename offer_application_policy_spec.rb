@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe OfferPolicy do
-  let(:offer) { create(:offer) }
-  subject { described_class.new(user, offer) }
+describe OfferApplicationPolicy do
+  let(:offer_application) { create(:offer_application) }
+  subject { described_class.new(user, offer_application) }
 
   context '未ログインの時' do
     let(:user) { nil }

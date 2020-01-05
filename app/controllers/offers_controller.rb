@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
-  before_action :new_authorize, only: [:new, :create]
+  before_action :offer_authorize, only: [:new, :create, :applied, :posted]
 
   def index
     @offers = Offer.all.order(updated_at: :desc)
@@ -61,7 +61,7 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:name, :description, :deadline, :fee_type, :fee)
   end
 
-  def new_authorize
+  def offer_authorize
     authorize Offer
   end
 end
