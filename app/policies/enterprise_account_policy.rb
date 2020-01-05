@@ -6,7 +6,7 @@ class EnterpriseAccountPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user&.present?
   end
 
   def edit?
@@ -16,7 +16,6 @@ class EnterpriseAccountPolicy < ApplicationPolicy
   def update?
     edit?
   end
-
 
   def destroy?
     @user&.admin? || edit?

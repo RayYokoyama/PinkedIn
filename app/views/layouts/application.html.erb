@@ -15,11 +15,11 @@
         <% if current_user&.admin? %><p>adminユーザーでログインしています。</p><% end %>
         <ul>
           <li><%= link_to('トップ', root_path ) %></li>
+          <li><%= link_to('求人一覧', offers_path) %></li>
+          <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
           <% if current_user %>
             <li><%= link_to('ログアウト', destroy_user_session_path, method: :delete) %></li>
             <li><%= link_to('プロフィールページ', user_path) %></li>
-            <li><%= link_to('求人一覧', offers_path) %></li>
-            <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
             <% if current_user.ea_user? %>
               <li><%= link_to('出した求人一覧', posted_offers_path) %></li>
             <% else %>
