@@ -1,6 +1,17 @@
 <h1><%= @offer.name %>の詳細ページ</h1>
 
-<p><%= @offer.description %></p>
+<dl>
+  <dt>給与タイプ: <%= Constants::FEE_TYPE[@offer.fee_type.to_sym] %></dt>
+</dl>
+<dl>
+  <dt>給与: <%= @offer.fee %>円</dt>
+</dl>
+<dl>
+  <dt>詳細: <%= @offer.description %></dt>
+</dl>
+<dl>
+  <dt>掲載期限: <%= @offer.deadline.strftime("%Y年%m月%d日%H時%M分") %></dt>
+</dl>
 <% if current_user.own_offer?(@offer) %>
   <%= link_to '編集する', edit_offer_path(@offer) %>
   <%= link_to '削除する', offer_path(@offer), method: :delete, data: { confirm: '本当に削除しますか？' } %>

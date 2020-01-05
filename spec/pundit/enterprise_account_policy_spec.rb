@@ -7,7 +7,7 @@ describe EnterpriseAccountPolicy do
   context '未ログインの時' do
     let(:user) { nil }
   
-    it { is_expected.to authorize(:show)    }
+    it { is_expected.to_not authorize(:show)    }
     it { is_expected.to_not authorize(:update)  }
     it { is_expected.to_not authorize(:edit)    }
     it { is_expected.to_not authorize(:destroy) }
