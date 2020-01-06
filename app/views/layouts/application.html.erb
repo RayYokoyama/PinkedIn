@@ -5,34 +5,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% unless %w[/logout /signup /login].include?(request.path) %>
-      <header>
-        <% if current_user&.admin? %><p>adminユーザーでログインしています。</p><% end %>
-        <ul>
-          <li><%= link_to('トップ', root_path ) %></li>
-          <li><%= link_to('求人一覧', offers_path) %></li>
-          <li><%= link_to('企業一覧', enterprise_accounts_path) %></li>
-          <% if current_user %>
-            <li><%= link_to('ログアウト', destroy_user_session_path, method: :delete) %></li>
-            <li><%= link_to('プロフィールページ', user_path) %></li>
-            <% if current_user.ea_user? %>
-              <li><%= link_to('出した求人一覧', posted_offers_path) %></li>
-            <% else %>
-              <li><%= link_to('応募した求人一覧', applied_offers_path) %></li>
-            <% end %>
-          <% else %>
-            <li><%= link_to('ユーザー登録', new_user_registration_path) %></li>
-            <li><%= link_to('企業ユーザー登録', ea_signup_path) %></li>
-            <li><%= link_to('ログイン', new_user_session_path ) %></li>
-          <% end %>
-        </ul>
-      </header>
-    <% end %>
-    <%= yield %>
-  </body>
 </html>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">PinkedIn</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <% if current_user.present? %>
+          <li class="nav-item active"><%= link_to('求人一覧', offers_path, class: "nav-link") %></li>
+          <li class="nav-item active"><%= link_to('企業一覧', enterprise_accounts_path, class: "nav-link") %></li>
+          <% if current_user.ea_user? %>
+            <li class="nav-item active"><%= link_to('出した求人一覧', posted_offers_path, class: "nav-link") %></li>
+          <% else %>
+            <li class="nav-item active"><%= link_to('応募した求人一覧', applied_offers_path, class: "nav-link") %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="nav-item dropdown">
+      <% if current_user&.present? %>
+        <%= link_to "#{current_user.name} <b class='caret'></b>".html_safe, '/', :id => 'setupdrop', :'data-toggle' => 'dropdown', :class => 'dropdown-toggle' %>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><%= link_to('ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item") %></li>
+          <li><%= link_to('プロフィールページ', user_path, class: "dropdown-item")%></li>
+        </ul>
+      <% else %>
+        <%= link_to "新規登録/ログイン <b class='caret'></b>".html_safe, '', :id => 'setupdrop', :'data-toggle' => 'dropdown', :class => 'dropdown-toggle' %>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><%= link_to('ユーザー登録', new_user_registration_path, class: "dropdown-item") %></li>
+          <li><%= link_to('企業ユーザー登録', ea_signup_path, class: "dropdown-item") %></li>
+          <li><%= link_to('ログイン', new_user_session_path, class: "dropdown-item" ) %></li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>    
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
