@@ -27,11 +27,10 @@ $(function() {
       }
     );
 
-  $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
-    if (event.keyCode === 13) {
-      chatChannel.speak(event.target.value);
-      event.target.value = '';
-      return event.preventDefault();
-    }
+  $('#send_btn').on('click', () =>  {
+    const text = $('input[data-behavior="room_speaker"]').val();
+    chatChannel.speak(text);
+    event.target.value = '';
+    return event.preventDefault();
   });
 });
