@@ -4,8 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'rails', '~> 6.0.1'
-gem 'sqlite3', '~> 1.4', group: [:development, :test]
-gem 'pg', group: :production
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -21,6 +19,10 @@ gem 'pundit'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails_admin', '~> 2.0'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -28,6 +30,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'simplecov', :require => false
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
