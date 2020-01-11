@@ -22,6 +22,7 @@
         <% if current_user.present? %>
           <li class="nav-item active"><%= link_to('求人一覧', offers_path, class: "nav-link") %></li>
           <li class="nav-item active"><%= link_to('企業一覧', enterprise_accounts_path, class: "nav-link") %></li>
+          <li class="nav-item active"><%= link_to('チャット', rooms_path, class: "nav-link") %></li>
           <% if current_user.ea_user? %>
             <li class="nav-item active"><%= link_to('出した求人一覧', posted_offers_path, class: "nav-link") %></li>
           <% else %>
