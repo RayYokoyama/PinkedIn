@@ -1,6 +1,5 @@
 class CreateOfferApplications < ActiveRecord::Migration[6.0]
   def change
-    drop_table :offer_applications
 
     create_table :offer_applications do |t|
       t.references :offer, null: false, foreign_key: true
