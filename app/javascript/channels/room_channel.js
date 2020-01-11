@@ -30,7 +30,7 @@ $(function() {
   $('#send_btn').on('click', () =>  {
     const text = $('input[data-behavior="room_speaker"]').val();
     chatChannel.speak(text);
-    event.target.value = '';
+    $('input[data-behavior="room_speaker"]').val('')
     return event.preventDefault();
   });
 });
