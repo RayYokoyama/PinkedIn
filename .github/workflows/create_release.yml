@@ -1,0 +1,34 @@
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.3.0
+        env:
+          PRODUCTION_BRANCH: release
+          TZ: Asia/Tokyo
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const pr = context.payload.pull_request
+            if (!(pr.merged && pr.base.ref === process.env.PRODUCTION_BRANCH)) return;
+
+            const merged_at = new Date(pr.merged_at);
+            const tag_name = String(merged_at.getFullYear()).padStart(4, '0')
+              + String(merged_at.getMonth() + 1).padStart(2, '0')
+              + String(merged_at.getDate()).padStart(2, '0')
+              + String(merged_at.getHours()).padStart(2, '0')
+              + String(merged_at.getMinutes()).padStart(2, '0')
+              + String(merged_at.getSeconds()).padStart(2, '0');
+
+            github.repos.createRelease({
+              ...context.repo,
+              draft: true,
+              tag_name: tag_name,
+              name: tag_name,
+              target_commitish: process.env.GITHUB_SHA,
+              body: pr.body
+            });
