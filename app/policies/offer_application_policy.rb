@@ -1,3 +1,4 @@
+# typed: true
 class OfferApplicationPolicy < ApplicationPolicy
   
   def initialize(user, offer_application)

@@ -1,3 +1,4 @@
+# typed: false
 class EnterpriseAccountsController < ApplicationController
   before_action :set_enterprise_account, only: [:show, :edit, :update, :destroy]
 

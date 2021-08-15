@@ -1,3 +1,4 @@
+# typed: false
 # enterprise_accountの作成
 enterprise_account = EnterpriseAccount.create(
   name: 'テスト用株式会社',

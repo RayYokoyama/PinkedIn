@@ -1,3 +1,4 @@
+# typed: true
 class EnterpriseAccountPolicy < ApplicationPolicy
 
   def initialize(user, enterprise_account)

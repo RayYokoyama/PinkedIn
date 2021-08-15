@@ -1,3 +1,4 @@
+# typed: false
 FactoryBot.define do
   factory :offer do
     name { "テスト用求人" }

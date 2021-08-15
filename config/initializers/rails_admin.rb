@@ -1,3 +1,4 @@
+# typed: false
 RailsAdmin.config do |config|
 
   ### Popular gems integration

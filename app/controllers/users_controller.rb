@@ -1,3 +1,4 @@
+# typed: false
 class UsersController < ApplicationController
   before_action :redirect_if_not_logged_in, :set_user
   before_action :redirect_if_current_user, only:[:show]

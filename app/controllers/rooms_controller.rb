@@ -1,3 +1,4 @@
+# typed: false
 class RoomsController < ApplicationController
   before_action :authenticate_user! # Deviseのログイン確認
 

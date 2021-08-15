@@ -1,3 +1,4 @@
+# typed: false
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :offer_authorize, only: [:new, :create, :applied, :posted]

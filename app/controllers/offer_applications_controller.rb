@@ -1,3 +1,4 @@
+# typed: false
 class OfferApplicationsController < ApplicationController
   def create
     authorize OfferApplication

@@ -1,3 +1,4 @@
+# typed: strict
 class Message < ApplicationRecord
   validates :content, presence: true
   # createの後にコミットする { MessageBroadcastJobのperformを遅延実行 引数はself }

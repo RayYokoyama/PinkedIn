@@ -1,3 +1,4 @@
+# typed: strict
 class Offer < ApplicationRecord
   has_many :offer_applications
   has_many :users, through: :offer_applications

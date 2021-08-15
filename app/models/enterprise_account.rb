@@ -1,3 +1,4 @@
+# typed: strict
 class EnterpriseAccount < ApplicationRecord
   validates :name, :hiragana, presence: true
 

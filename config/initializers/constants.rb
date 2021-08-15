@@ -1,3 +1,4 @@
+# typed: true
 module Constants
   FEE_TYPE = {
     month: '月給',
