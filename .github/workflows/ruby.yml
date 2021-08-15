@@ -51,7 +51,7 @@ jobs:
         bundle exec rspec
     - name: run sorbet
       run: |
-        bundle exec rsb tc
+        bundle exec srb tc
     - uses: devmasx/coverage-check-action@v1.1.0
       with:
         type: simplecov
